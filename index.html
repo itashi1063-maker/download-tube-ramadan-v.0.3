@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مُحمل الفيديوهات الذكي</title>
+
+<style>
+
+body{
+font-family: Arial, sans-serif;
+background:#f4f6f9;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+margin:0;
+}
+
+.container{
+background:white;
+padding:30px;
+border-radius:10px;
+box-shadow:0 5px 20px rgba(0,0,0,0.1);
+width:400px;
+text-align:center;
+}
+
+h2{
+margin-bottom:10px;
+}
+
+p{
+color:#666;
+margin-bottom:20px;
+}
+
+.input-group{
+display:flex;
+gap:10px;
+}
+
+input{
+flex:1;
+padding:10px;
+border:1px solid #ccc;
+border-radius:6px;
+}
+
+button{
+padding:10px 15px;
+background:#007bff;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+}
+
+button:hover{
+background:#0056b3;
+}
+
+#statusMessage{
+margin-top:15px;
+color:#333;
+}
+
+.suggestions{
+margin-top:25px;
+text-align:right;
+}
+
+.suggestions h3{
+font-size:16px;
+margin-bottom:10px;
+}
+
+.suggestions ul{
+list-style:none;
+padding:0;
+}
+
+.suggestions li{
+margin:6px 0;
+}
+
+.suggestions a{
+text-decoration:none;
+color:#007bff;
+cursor:pointer;
+}
+
+.suggestions a:hover{
+text-decoration:underline;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>تنزيل الفيديو</h2>
+<p>أدخل رابط الفيديو المباشر أدناه للحصول عليه</p>
+
+<div class="input-group">
+<input type="text" id="videoUrl" placeholder="ضع الرابط هنا">
+<button onclick="downloadVideo()">تحميل الآن</button>
+</div>
+
+<div id="statusMessage"></div>
+
+<div class="suggestions">
+
+<h3>روابط مقترحة للتجربة</h3>
+
+<ul>
+
+<li>
+<a onclick="setVideo('https://www.youtube.com/watch?v=c3TQ_Khi558&t=671s')">
+فيديو مقترح 1
+</a>
+</li>
+
+<li>
+<a onclick="setVideo('https://www.youtube.com/watch?v=bpbt-cxIsHA')">
+فيديو مقترح 2
+</a>
+</li>
+
+<li>
+<a onclick="setVideo('https://www.youtube.com/watch?v=e3roiEZrEls&t=49s')">
+فيديو مقترح 3
+</a>
+</li>
+
+</ul>
+
+</div>
+
+</div>
+
+<script>
+
+function setVideo(url){
+document.getElementById("videoUrl").value = url;
+}
+
+function downloadVideo(){
+
+let url = document.getElementById("videoUrl").value;
+let status = document.getElementById("statusMessage");
+
+if(url === ""){
+status.innerText = "يرجى إدخال رابط فيديو";
+return;
+}
+
+status.innerText = "جارٍ معالجة الرابط...";
+
+window.open(url,"_blank");
+
+}
+
+</script>
+
+</body>
+</html>
